@@ -66,64 +66,52 @@ namespace MyDogs.Metodos
 
             Console.WriteLine("Por favor digite a quantidade de cachorros grandes");
             var QtdDogGrande = Int32.Parse(Console.ReadLine());
-            
+
             var fds = data.DayOfWeek == DayOfWeek.Saturday || data.DayOfWeek == DayOfWeek.Sunday;
             if (fds == true)
             {
-                var orcamento1 = new Orcamento();
-                var orcamento2 = new Orcamento();
-                var orcamento3 = new Orcamento();
 
-                orcamento1.Nome = "Meu canino";
-                orcamento1.Preco = (QtdDogPequeno * MeuCaninoFeliz.DogPequenoFds) + (QtdDogGrande * MeuCaninoFeliz.DogGrandeFds);
+                var precoMeuCanino = (QtdDogPequeno * MeuCaninoFeliz.DogPequenoFds) + (QtdDogGrande * MeuCaninoFeliz.DogGrandeFds);
 
-                orcamento2.Nome = "Vai Rex";
-                orcamento2.Preco = (QtdDogPequeno * VaiRex.DogPequenoFds) + (QtdDogGrande * VaiRex.DogGrandeFds);
+                var precoVaiRex = (QtdDogPequeno * VaiRex.DogPequenoFds) + (QtdDogGrande * VaiRex.DogGrandeFds);
 
-                orcamento3.Nome = "Chow Chagas";
-                orcamento3.Preco = (QtdDogPequeno * ChowChawgas.DogPequenoFds) + (QtdDogGrande * ChowChawgas.DogGrandeFds);
+                var precoChowChagas = (QtdDogPequeno * ChowChawgas.DogPequenoFds) + (QtdDogGrande * ChowChawgas.DogGrandeFds);
 
-                List<Orcamento> lista = new List<Orcamento>()
+                if (precoMeuCanino < precoVaiRex && precoMeuCanino < precoChowChagas)
                 {
-                    orcamento1,
-                    orcamento2,
-                    orcamento3
-                };
-                lista.Select(x => x.Preco);
-                lista.Select(x => x.Nome);
-                lista.OrderBy(x => x.Preco);
-                
-                Console.WriteLine("O menor preço está no " + lista.First());
+                    Console.WriteLine($"O menor preço está no petshop Meu Canino Feliz, o preço é R${precoMeuCanino},00");
+                }
+                else if (precoVaiRex < precoMeuCanino && precoVaiRex < precoChowChagas)
+                {
+                    Console.WriteLine($"O menor preço está no petshop Vai Rex, o preço é R${precoVaiRex},00");
+                }
+                else
+                {
+                    Console.WriteLine($"O menor preço está no petshop Chow Chagas, o preço é R${precoChowChagas},00");
+                }
             }
             else
             {
-                var orcamento1 = new Orcamento();
-                var orcamento2 = new Orcamento();
-                var orcamento3 = new Orcamento();
 
-                orcamento1.Nome = "Meu Canino";
-                orcamento1.Preco = (QtdDogGrande * MeuCaninoFeliz.DogPequenoSemana) + (QtdDogGrande * MeuCaninoFeliz.DogGrandeSemana);
+                var precoMeuCanino = (QtdDogPequeno * MeuCaninoFeliz.DogPequenoSemana) + (QtdDogGrande * MeuCaninoFeliz.DogGrandeSemana);
 
-                orcamento2.Nome = "Vai Rex";
-                orcamento2.Preco = (QtdDogGrande * VaiRex.DogPequenoSemana) + (QtdDogGrande * VaiRex.DogGrandeSemana);
+                var precoVaiRex = (QtdDogPequeno * VaiRex.DogPequenoSemana) + (QtdDogGrande * VaiRex.DogGrandeSemana);
 
-                orcamento3.Nome = "Chow Chagas";
-                orcamento3.Preco = (QtdDogGrande * ChowChawgas.DogPequenoSemana) + (QtdDogGrande * ChowChawgas.DogGrendeSemana);
+                var precoChowChagas = (QtdDogPequeno * ChowChawgas.DogPequenoSemana) + (QtdDogGrande * ChowChawgas.DogGrendeSemana);
 
-                List<Orcamento> lista = new List<Orcamento>()
+                if (precoMeuCanino < precoVaiRex && precoMeuCanino < precoChowChagas)
                 {
-                    orcamento1,
-                    orcamento2,
-                    orcamento3
-                };
-
-                lista.Select(x => x.Preco);
-                lista.Select(x => x.Nome);
-                lista.OrderBy(x => x.Preco);
-
-                Console.WriteLine("O menor preço está no " + lista.First());
+                    Console.WriteLine($"O menor preço está no petshop Meu Canino Feliz, o preço é R${precoMeuCanino},00");
+                }
+                else if (precoVaiRex < precoMeuCanino && precoVaiRex < precoChowChagas)
+                {
+                    Console.WriteLine($"O menor preço está no petshop Vai Rex, o preço é R${precoVaiRex},00");
+                }
+                else if(precoChowChagas < precoVaiRex && precoChowChagas < precoMeuCanino)
+                {
+                    Console.WriteLine($"O menor preço está no petshop Chow Chagas, o preço é R${precoChowChagas},00");
+                }
             }
-
         }
     }
 }
