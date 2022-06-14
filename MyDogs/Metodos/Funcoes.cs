@@ -1,5 +1,6 @@
 ﻿using MyDogs.petshops;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -69,42 +70,58 @@ namespace MyDogs.Metodos
             var fds = data.DayOfWeek == DayOfWeek.Saturday || data.DayOfWeek == DayOfWeek.Sunday;
             if (fds == true)
             {
-                var precoMeuCanino = (QtdDogPequeno * MeuCaninoFeliz.DogPequenoFds) + (QtdDogGrande * MeuCaninoFeliz.DogGrandeFds);
-                var precoVaiRex = (QtdDogPequeno * VaiRex.DogPequenoFds) + (QtdDogGrande * VaiRex.DogGrandeFds);
-                var precoChowChagas = (QtdDogPequeno * ChowChawgas.DogPequenoFds) + (QtdDogGrande * ChowChawgas.DogGrandeFds);
+                var orcamento1 = new Orcamento();
+                var orcamento2 = new Orcamento();
+                var orcamento3 = new Orcamento();
 
-                List<int> listaDePrecos = new List<int>();
+                orcamento1.Nome = "Meu canino";
+                orcamento1.Preco = (QtdDogPequeno * MeuCaninoFeliz.DogPequenoFds) + (QtdDogGrande * MeuCaninoFeliz.DogGrandeFds);
 
-                listaDePrecos.Add(precoMeuCanino);
-                listaDePrecos.Add(precoVaiRex);
-                listaDePrecos.Add(precoChowChagas);
-                listaDePrecos.Sort();
+                orcamento2.Nome = "Vai Rex";
+                orcamento2.Preco = (QtdDogPequeno * VaiRex.DogPequenoFds) + (QtdDogGrande * VaiRex.DogGrandeFds);
 
+                orcamento3.Nome = "Chow Chagas";
+                orcamento3.Preco = (QtdDogPequeno * ChowChawgas.DogPequenoFds) + (QtdDogGrande * ChowChawgas.DogGrandeFds);
 
-                var menorPreco = $"{listaDePrecos.First()}";
-                //return menorPreco;
-                Console.WriteLine(menorPreco);
+                List<Orcamento> lista = new List<Orcamento>()
+                {
+                    orcamento1,
+                    orcamento2,
+                    orcamento3
+                };
+                lista.Select(x => x.Preco);
+                lista.Select(x => x.Nome);
+                lista.OrderBy(x => x.Preco);
+                
+                Console.WriteLine("O menor preço está no " + lista.First());
             }
             else
             {
-                var precoMeuCanino = $" meu canino {(QtdDogGrande * MeuCaninoFeliz.DogPequenoSemana) + (QtdDogGrande * MeuCaninoFeliz.DogGrandeSemana)}";
-                var precoVaiRex = $"vai rex {(QtdDogGrande * VaiRex.DogPequenoSemana) + (QtdDogGrande * VaiRex.DogGrandeSemana)}";
-                var precoChowChagas = $"chow chagas {(QtdDogGrande * ChowChawgas.DogPequenoSemana) + (QtdDogGrande * ChowChawgas.DogGrendeSemana)}";
+                var orcamento1 = new Orcamento();
+                var orcamento2 = new Orcamento();
+                var orcamento3 = new Orcamento();
 
-                List<string> listaDePrecos = new List<string>();
+                orcamento1.Nome = "Meu Canino";
+                orcamento1.Preco = (QtdDogGrande * MeuCaninoFeliz.DogPequenoSemana) + (QtdDogGrande * MeuCaninoFeliz.DogGrandeSemana);
 
-                listaDePrecos.Add(precoMeuCanino);
-                listaDePrecos.Add(precoVaiRex);
-                listaDePrecos.Add(precoChowChagas);
-                listaDePrecos.Sort();
+                orcamento2.Nome = "Vai Rex";
+                orcamento2.Preco = (QtdDogGrande * VaiRex.DogPequenoSemana) + (QtdDogGrande * VaiRex.DogGrandeSemana);
 
-                var menorPreco = $"{listaDePrecos.First()}";
-                //var petshopMaisBarato = $"{listaDePrecos.Select().min}";
+                orcamento3.Nome = "Chow Chagas";
+                orcamento3.Preco = (QtdDogGrande * ChowChawgas.DogPequenoSemana) + (QtdDogGrande * ChowChawgas.DogGrendeSemana);
 
-                //return menorPreco;
-                Console.WriteLine($"O menor preço é do pet shop{menorPreco}");
+                List<Orcamento> lista = new List<Orcamento>()
+                {
+                    orcamento1,
+                    orcamento2,
+                    orcamento3
+                };
 
-                //return $"{menorPreco}";
+                lista.Select(x => x.Preco);
+                lista.Select(x => x.Nome);
+                lista.OrderBy(x => x.Preco);
+
+                Console.WriteLine("O menor preço está no " + lista.First());
             }
 
         }
