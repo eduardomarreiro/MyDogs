@@ -55,7 +55,7 @@ namespace MyDogs.Metodos
             }
         }
 
-        public void LocalMaisBarato(/*string Dia, int QtdDogPequeno, int QtdDogGrande*/)
+        public void LocalMaisBarato()
         {
             Console.WriteLine("Por favor digite uma data no formato dd/MM/yyyy");
             var Dia = Console.ReadLine();
@@ -70,7 +70,6 @@ namespace MyDogs.Metodos
             var fds = data.DayOfWeek == DayOfWeek.Saturday || data.DayOfWeek == DayOfWeek.Sunday;
             if (fds == true)
             {
-
                 var precoMeuCanino = (QtdDogPequeno * MeuCaninoFeliz.DogPequenoFds) + (QtdDogGrande * MeuCaninoFeliz.DogGrandeFds);
 
                 var precoVaiRex = (QtdDogPequeno * VaiRex.DogPequenoFds) + (QtdDogGrande * VaiRex.DogGrandeFds);
@@ -85,9 +84,28 @@ namespace MyDogs.Metodos
                 {
                     Console.WriteLine($"O menor preço está no petshop Vai Rex, o preço é R${precoVaiRex},00");
                 }
-                else
+                else if (precoChowChagas < precoVaiRex && precoChowChagas < precoMeuCanino)
                 {
                     Console.WriteLine($"O menor preço está no petshop Chow Chagas, o preço é R${precoChowChagas},00");
+                }
+
+                // CRITERIO DE DESEMPATE
+
+                else if((precoMeuCanino == precoVaiRex) && precoMeuCanino == precoChowChagas)
+                {
+                    Console.WriteLine($"todos petshops estão com o mesmo preço, R${precoChowChagas},00 sugerimos que leve seus cães no Chow Chagas por ser mais perto");
+                }
+                else if ((precoMeuCanino == precoVaiRex) && precoVaiRex < precoChowChagas)
+                {
+                    Console.WriteLine($"Os petshops Meu Canino Feliz e Vai Rex estão com o mesmo preço, R${precoVaiRex},00 sugerimos que leve seus cães no Vai Rex por ser mais perto");
+                }
+                else if ((precoVaiRex == precoChowChagas) && precoChowChagas < precoMeuCanino)
+                {
+                    Console.WriteLine($"Os petshops Vai Rex e Chow Chagas estão com o mesmo preço, R${precoChowChagas},00 sugerimos que leve seus cães no Chow Chagas por ser mais perto");
+                }
+                else if ((precoMeuCanino == precoChowChagas) && precoChowChagas < precoVaiRex)
+                {
+                    Console.WriteLine($"Os petshops Meu Canino Feliz e Chow Chagas estão com o mesmo preço, R${precoChowChagas},00 sugerimos que leve seus cães no Chow Chagas por ser mais perto");
                 }
             }
             else
@@ -107,9 +125,28 @@ namespace MyDogs.Metodos
                 {
                     Console.WriteLine($"O menor preço está no petshop Vai Rex, o preço é R${precoVaiRex},00");
                 }
-                else if(precoChowChagas < precoVaiRex && precoChowChagas < precoMeuCanino)
+                else if (precoChowChagas < precoVaiRex && precoChowChagas < precoMeuCanino)
                 {
                     Console.WriteLine($"O menor preço está no petshop Chow Chagas, o preço é R${precoChowChagas},00");
+                }
+
+                // CRITERIO DE SEMPATE
+
+                else if ((precoMeuCanino == precoVaiRex) && precoMeuCanino == precoChowChagas)
+                {
+                    Console.WriteLine($"todos petshops estão com o mesmo preço, R${precoChowChagas},00 sugerimos que leve seus cães no Chow Chagas por ser mais perto");
+                }
+                else if ((precoMeuCanino == precoVaiRex) && precoVaiRex < precoChowChagas)
+                {
+                    Console.WriteLine($"Os petshops Meu Canino Feliz e Vai Rex estão com o mesmo preço, R${precoVaiRex},00 sugerimos que leve seus cães no Vai Rex por ser mais perto");
+                }
+                else if ((precoVaiRex == precoChowChagas) && precoChowChagas < precoMeuCanino)
+                {
+                    Console.WriteLine($"Os petshops Vai Rex e Chow Chagas estão com o mesmo preço, R${precoChowChagas},00 sugerimos que leve seus cães no Chow Chagas por ser mais perto");
+                }
+                else if ((precoMeuCanino == precoChowChagas) && precoChowChagas < precoVaiRex)
+                {
+                    Console.WriteLine($"Os petshops Meu Canino Feliz e Chow Chagas estão com o mesmo preço, R${precoChowChagas},00 sugerimos que leve seus cães no Chow Chagas por ser mais perto");
                 }
             }
         }
